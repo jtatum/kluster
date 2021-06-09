@@ -11,3 +11,9 @@
     state: present
   when: hostvars[item].ansible_host is defined
   with_items: "{{ groups.all }}"
+
+- name: Set authorized key for user ubuntu copying it from current user
+  ansible.posix.authorized_key:
+    user: ubuntu
+    state: present
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
