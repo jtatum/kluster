@@ -2,7 +2,7 @@
 
     ansible all -bm reboot
 
-    ansible-playbook site.yaml
+    ansible-playbook kluster.yaml --skip-tags slow
 
     ansible rpi1 -m ansible.builtin.setup
 
