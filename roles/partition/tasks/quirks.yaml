@@ -1,4 +1,7 @@
 ---
+# Some USB SSD adapters don't support UAS, the new fast transfer mechanism. Revert back to USB mass storage for these to avoid errors.
+# https://www.raspberrypi.org/forums/viewtopic.php?t=245931
+# TODO: This should be conditionalized
 - name: Add quirks to boot command line
   replace:
     path: /boot/firmware/cmdline.txt
