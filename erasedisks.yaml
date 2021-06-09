@@ -1,0 +1,21 @@
+---
+- name: erase disks
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Unmount filesystem
+      ansible.posix.mount:
+        path: /ssd
+        state: absent
+
+    - name: delete sda1 partition
+      community.general.parted:
+        device: /dev/sda
+        number: 1
+        state: absent
+      register: partition
+
+    - name: Output
+      debug:
+        var: partition

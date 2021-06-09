@@ -1,0 +1,31 @@
+---
+- name: Create partitions
+  community.general.parted:
+    device: /dev/{{drive}}
+    number: 1
+    state: present
+  register: partition
+
+- name: Create filesystem
+  community.general.filesystem:
+    dev: /dev/{{ drive }}1
+    state: present
+    fstype: "{{ fs }}"
+  register: filesystem
+
+- name: Create mount point
+  file:
+    path: /ssd
+    state: directory
+    mode: '0755'
+
+- name: Get facts again
+  setup:
+  when: partition.changed or filesystem.changed
+
+- name: Mount filesystem
+  ansible.posix.mount:
+    path: /ssd
+    src: UUID={{ ansible_devices[drive]["partitions"][drive + "1"]["uuid"] }}
+    state: mounted
+    fstype: "{{ fs }}"

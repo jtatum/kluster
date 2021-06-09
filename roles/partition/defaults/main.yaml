@@ -1,0 +1,5 @@
+---
+drive: sda
+fs: xfs
+# Stupid Sabrent USB 3.0 SATA adapter
+quirks: 152d:1561

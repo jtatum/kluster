@@ -1,0 +1,6 @@
+---
+- include: quirks.yaml
+- include: fstrim.yaml
+- include: partition.yaml
+# - debug:
+#     var: hostvars[inventory_hostname]["ansible_devices"].keys()

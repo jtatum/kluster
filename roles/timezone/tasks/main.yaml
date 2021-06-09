@@ -1,0 +1,16 @@
+---
+- name: Check timezone
+  when: timezone is defined and timezone
+  block:
+    - name: Get timezone
+      lineinfile:
+        path: /etc/timezone
+        regexp: ^{{ timezone | regex_escape }}$
+        state: absent
+      changed_when: false
+      check_mode: true
+      register: different_timezone
+
+- name: Call timedatectl
+  command: timedatectl set-timezone {{timezone}}
+  when: not different_timezone.found
