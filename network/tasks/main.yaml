@@ -17,3 +17,9 @@
     user: ubuntu
     state: present
     key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+- name: Disable wpa supplicant
+  systemd:
+    name: wpa_supplicant.service
+    enabled: no
+    state: stopped
