@@ -1,6 +1,7 @@
 ---
 # update
 - name: Upgrade all apt packages
+  tags: slow
   apt:
     upgrade: dist
     update_cache: yes
