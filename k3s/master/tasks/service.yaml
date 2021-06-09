@@ -1,0 +1,17 @@
+---
+- name: Install k3s systemd unit file
+  template:
+    src: ../common/templates/k3s.service.j2
+    dest: "{{ systemd_dir }}/k3s.service"
+    owner: root
+    group: root
+    mode: 0644
+  vars:
+    command_line: server
+
+- name: Start k3s service
+  systemd:
+    name: k3s.service
+    daemon_reload: yes
+    state: started
+    enabled: yes

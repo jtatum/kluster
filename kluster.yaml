@@ -1,11 +1,25 @@
 ---
-- name: The Kluster
+- name: System configuration and prerequisites
   hosts: all
   become: true
-  # strategy: free
 
   roles:
     - partition
     - network
     - apt
     - timezone
+    - k3s/common
+
+- name: K3s master
+  hosts: master
+  become: true
+
+  roles:
+    - k3s/master
+
+- name: K3s nodes
+  hosts: nodes
+  become: true
+
+  roles:
+    - k3s/nodes

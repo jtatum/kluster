@@ -1,0 +1,9 @@
+---
+- name: Read node token
+  slurp:
+    src: /var/lib/rancher/k3s/server/node-token
+  register: node_token
+
+- name: Set node token fact
+  set_fact:
+    token: "{{ node_token.content | b64decode | regex_replace('\n', '') }}"
