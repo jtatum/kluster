@@ -23,7 +23,6 @@
   delegate_to: localhost
 
 - name: Update IP in config file
-  tags: wip
   become: no
   replace:
     path: ~/.kube/k3s.yaml
