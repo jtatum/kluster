@@ -21,6 +21,8 @@
 
 - name: Get facts again
   setup:
+    gather_subset:
+      - hardware
   when: partition.changed or filesystem.changed
 
 - name: Mount filesystem
