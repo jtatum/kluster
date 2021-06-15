@@ -1,0 +1,15 @@
+---
+- name: Create /ssd/kadalu directory
+  file:
+    path: /ssd/kadalu
+    state: directory
+
+- name: Create /ssd/kadalu/ha
+  file:
+    path: /ssd/kadalu/ha
+    state: directory
+
+- name: Create /ssd/kadalu/disperse
+  file:
+    path: /ssd/kadalu/disperse
+    state: directory
