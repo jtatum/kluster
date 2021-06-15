@@ -1,0 +1,32 @@
+---
+- name: Ensure ~/.kube exists on local machine
+  become: no
+  file:
+    path: ~/.kube
+    state: directory
+  delegate_to: localhost
+
+# TODO: We may need to wait for this
+
+- name: Fetch k3s.yaml config to ~/.kube on local machine
+  fetch:
+    src: /etc/rancher/k3s/k3s.yaml
+    dest: ~/.kube/k3s.yaml
+    flat: yes
+
+- name: Ensure local k3s.yaml has appropriate permissions
+  become: no
+  file:
+    path: ~/.kube/k3s.yaml
+    mode: '0600'
+    state: file
+  delegate_to: localhost
+
+- name: Update IP in config file
+  tags: wip
+  become: no
+  replace:
+    path: ~/.kube/k3s.yaml
+    regexp: "127.0.0.1"
+    replace: "{{ hostvars[groups['master'][0]]['ansible_host'] }}"
+  delegate_to: localhost

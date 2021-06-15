@@ -22,3 +22,5 @@ The cluster currently consists of 3 Raspberry Pi 4Bs. `rpi1` has 8GB of RAM, `rp
     ansible-galaxy install -r requirements.yaml
 * Run the playbook
     ansible-playbook kluster.yaml
+* Optional - symlink ~/.kube/k3s.yml to config so `kubectl` works:
+    ln -s ~/.kube/k3s.yml ~/.kube/config

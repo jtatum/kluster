@@ -1,3 +1,4 @@
 ---
 - include: service.yaml
 - include: token.yaml
+- include: kubecfg.yaml
