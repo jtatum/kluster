@@ -6,4 +6,10 @@
     dest: /usr/local/bin/k3s
     owner: root
     group: root
-    mode: 0755
+    mode: "0755"
+
+- name: Install k3s-killall.sh
+  copy:
+    src: ../files/k3s-killall.sh
+    dest: /usr/local/bin/k3s-killall.sh
+    mode: "0755"
