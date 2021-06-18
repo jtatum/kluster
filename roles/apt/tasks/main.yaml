@@ -8,6 +8,7 @@
 
 # Install useful stuff
 - name: Install useful tools
+  tags: slow
   apt:
     name: "{{ packages }}"
     state: present
@@ -17,7 +18,9 @@
 
 - name: Check if a reboot is required
   register: reboot_required_file
-  stat: path=/var/run/reboot-required get_md5=no
+  stat:
+    path: /var/run/reboot-required
+    get_md5: no
 
 - name: Reboot for updates
   reboot:
