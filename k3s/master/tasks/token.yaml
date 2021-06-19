@@ -1,7 +1,7 @@
 ---
 - name: Read node token
   slurp:
-    src: /var/lib/rancher/k3s/server/node-token
+    src: /ssd/k3s/server/node-token
   register: node_token
 
 - name: Set node token fact

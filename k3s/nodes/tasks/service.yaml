@@ -7,7 +7,7 @@
     group: root
     mode: 0644
   vars:
-    command_line: agent --server https://{{ hostvars[groups['master'][0]]['ansible_host'] }}:6443 --token {{ hostvars[groups['master'][0]]['token'] }}
+    command_line: agent --data-dir /ssd/k3s --server https://{{ hostvars[groups['master'][0]]['ansible_host'] }}:6443 --token {{ hostvars[groups['master'][0]]['token'] }}
 
 - name: Start k3s service
   systemd:

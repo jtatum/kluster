@@ -1,0 +1,5 @@
+---
+- name: Create /ssd/k3s directory
+  file:
+    path: /ssd/k3s
+    state: directory

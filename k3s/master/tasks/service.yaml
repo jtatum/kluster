@@ -7,7 +7,7 @@
     group: root
     mode: 0644
   vars:
-    command_line: server
+    command_line: server --data-dir /ssd/k3s
 
 - name: Start k3s service
   systemd:
