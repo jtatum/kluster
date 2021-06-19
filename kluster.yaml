@@ -8,6 +8,7 @@
     - network
     - apt
     - timezone
+    - movelogs
     - k3s/common
 
 - name: K3s master

@@ -1,0 +1,18 @@
+---
+- name: Create logs directory
+  file:
+    path: /ssd/log
+    state: directory
+
+- name: Mount logs directory
+  ansible.posix.mount:
+    path: /var/log
+    src: /ssd/log
+    state: mounted
+    opts: bind
+    fstype: none
+  register: mount
+
+- name: Reboot after mount
+  reboot:
+  when: mount.changed
