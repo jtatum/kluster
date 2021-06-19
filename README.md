@@ -4,7 +4,7 @@ This is my deployment automation for the OS and
 
 ## Prerequisites
 
-* An SD card with Ubuntu 20.04.
+* An SD card with Ubuntu 20.04. `ubuntu-20.04.2-preinstalled-server-arm64+raspi.img`
 * DHCP static lease reservations (listed in `inventory.yaml`)
 * SSH into the system once to set password (this can probably be automated with `sshpass` and `expect`)
 * The password encrypted with ansible-vault, stored in inventory.yaml and the key at `~/ansible-vault-pw` (see `ansible.cfg`)
