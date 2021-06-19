@@ -4,6 +4,7 @@
     name: "{{ inventory_hostname }}"
 
 - name: Add IP address of all hosts to all hosts
+  tags: slow
   lineinfile:
     dest: /etc/hosts
     regexp: '.*{{ item }}$'
